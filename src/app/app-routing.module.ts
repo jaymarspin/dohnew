@@ -8,13 +8,15 @@ import { CertComponent } from './pages/client-home/cert/cert.component'
 import { ClientHomeComponent } from './pages/client-home/client-home.component'
 import { CertificateComponent } from './pages/certificate/certificate.component'
 import { UsersComponent } from '../app/pages/admin-home/users/users.component'
+import { ReportComponent } from '../app/report/report.component'
 const routes: Routes = [
-  {
+  { 
     path: '',
     redirectTo: 'sign',
     pathMatch: 'full'
   },
   {path: "certificate/:id", component: CertificateComponent},
+  {path: "report", component: ReportComponent},
   { path: 'sign', component: SigninComponent},
   { path: 'admin-home', component: AdminHomeComponent,children: [
       {  path: '',

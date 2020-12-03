@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy,ViewChild } from '@angular/core';
 import { ServiceService } from '../../services/service.service'
 import pdfjs from 'jspdf';
  import { Router,ActivatedRoute} from '@angular/router'
  import { HttpRequestService} from '../../services/http-request.service'
  import qrcode from 'yaqrcode'
 import * as moment from "moment"
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-certificate',
@@ -12,6 +14,8 @@ import * as moment from "moment"
   styleUrls: ['./certificate.component.scss']
 })
 export class CertificateComponent implements OnInit {
+
+  @ViewChild('bigPdfViewer', { static: true }) public bigPdfViewer;
   title = 'app';
   elementType = 'url';
   value = 'Techiediaries';
@@ -35,7 +39,8 @@ export class CertificateComponent implements OnInit {
    id:number
 
    usershow:boolean = false
-  constructor(private activateRoute: ActivatedRoute,public service: ServiceService,public request: HttpRequestService,private router: Router)
+ 
+  constructor(private location: Location,private activateRoute: ActivatedRoute,public service: ServiceService,public request: HttpRequestService,private router: Router)
 
   {
 
@@ -87,7 +92,7 @@ export class CertificateComponent implements OnInit {
       this.impression = result.impression
       this.remarks = result.remarks
       this.filename = result.filename
-
+      console.log(this.impression)
   
       this.viewCert()
 
@@ -113,15 +118,8 @@ export class CertificateComponent implements OnInit {
   ngOnDestroy(){
   }
 
+ 
 
-
-
-  testAfterPrint(){
-    console.log("randall")
-
-    // console.log(event)
-    // this.service.addReport(this.service.reportData)
-  }
   goCert(){
 
 
@@ -296,8 +294,14 @@ let tmp = this.baseY
     this.doc.setFont('Helvetica','bold');
     this.doc.setFontSize(11);
     this.doc.setTextColor(0, 0, 0);
-    var text = ""+this.impression+"";
-  this.pdfbuffer(48,text,120)
+    let impress = this.impression.replace(/[\r\n]/g, '');
+    let temporary = impress.split("<br />")
+    for(var i = 0;i < temporary.length;i++){
+      var text = ""+temporary[i]+"";
+      this.pdfbuffer(48,text,120)
+      this.baseY += 5
+    }
+    
  
   this.doc.setFont('Helvetica','normal');
     this.doc.setFontSize(11);
@@ -317,11 +321,17 @@ let tmp = this.baseY
     this.doc.setFont('Helvetica','bold');
     this.doc.setFontSize(11);
     this.doc.setTextColor(0, 0, 0);
-    var text = ""+this.remarks+"";
-  this.pdfbuffer(48,text,115)
+    let remarkable = this.remarks.replace(/[\r\n]/g, '');
+    temporary = remarkable.split("<br />")
+    for(var i = 0;i < temporary.length;i++){
+      var text = ""+temporary[i]+"";
+      this.pdfbuffer(48,text,120)
+      this.baseY += 5
+    }
+    
 
   this.doc.setFont('Helvetica','normal');
-  this.doc.setFontSize(11);
+  this.doc.setFontSize(11); 
   this.doc.setTextColor(0, 0, 0);
   this.doc.text("Remarks       :                     ",20,tmp);
 
@@ -353,7 +363,7 @@ let tmp = this.baseY
     this.doc.setTextColor(0, 0, 0);
     this.doc.text('Minister of Health- BARMM',20,this.baseY);
 
-    this.baseY -= 55
+    this.baseY -= 40
     this.doc.setFont('Helvetica','bold');
     img.src = 'assets/esig.png'
     this.doc.addImage(img, 'png'  ,25, this.baseY, 45, 30);
@@ -384,7 +394,12 @@ let tmp = this.baseY
 
         let space = this.doc.getTextDimensions(splitter[i]).w
         storeText+=splitter[i]
-        console.log(this.doc.getTextDimensions(storeText).w)
+
+        console.log(storeText.indexOf("<br />"))
+        let tmpp = storeText.indexOf("<br />")
+        storeText =  storeText.replace("<br/>", "W3Schools");
+
+        
         if(this.doc.getTextDimensions(storeText).w > limit){
           this.baseY += 5
           storeText = ""
@@ -396,7 +411,38 @@ let tmp = this.baseY
         baseX += tmp
       }
     }
+    goback(){
+      this.location.back();
+    }
 
+
+
+    
+  public testBeforePrint() {
+     
+  }
+
+  public testAfterPrint() {
+     
+    let data = {
+      // data: this.service.reportData,
+      id: this.activateRoute.snapshot.paramMap.get("id")
+    }
+
+     
+
+    this.request.postData("add-report.php",data).subscribe(res =>{
+      console.log(res)
+    })
+  }
+
+  public testPagesLoaded(count: number) {
+    console.log('testPagesLoaded() successfully called. Total pages # : ' + count);
+  }
+
+  public testPageChange(pageNumber: number) {
+    console.log('testPageChange() successfully called. Current page # : ' + pageNumber);
+  }
 
 
 }

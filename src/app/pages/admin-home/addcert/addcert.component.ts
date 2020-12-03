@@ -35,61 +35,61 @@ doc:any
   ngOnInit(): void {
     
     this.reloadPage();
-    $(e =>{
-      $("#input-b4").css({
-        "opacity": 0,
-        "width": "100%",
-        "height": "60px",
-        "top": "0px",
-        "position": "relative",
-        "margin-top": "-100px",
-        "cursor": "pointer"
-      })
+    // $(e =>{
+    //   $("#input-b4").css({
+    //     "opacity": 0,
+    //     "width": "100%",
+    //     "height": "60px",
+    //     "top": "0px",
+    //     "position": "relative",
+    //     "margin-top": "-100px",
+    //     "cursor": "pointer"
+    //   })
 
-      $(".file-caption").css({
-        display: "none"
-      })
+    //   $(".file-caption").css({
+    //     display: "none"
+    //   })
 
-      $(".input-group-btn").css({
-        display: "block",
-        width: "100%",
-        "text-align": "center"
-      })
+    //   $(".input-group-btn").css({
+    //     display: "block",
+    //     width: "100%",
+    //     "text-align": "center"
+    //   })
 
-      $(".file-drop-zone-title").css({
-        display: "none"
-      })
+    //   $(".file-drop-zone-title").css({
+    //     display: "none"
+    //   })
 
-      $(".fileinput-remove").css({
-        display: "none"
-      })
+    //   $(".fileinput-remove").css({
+    //     display: "none"
+    //   })
 
-      $(".btn-file span").html("CLICK HERE TO SELECT FOR RT-PCR PDF NOW")
-      $(".btn-file span").css({
-        position: "relative",
-        "top": "20px",
-        "font-size": "25px",
+    //   $(".btn-file span").html("CLICK HERE TO SELECT FOR RT-PCR PDF NOW")
+    //   $(".btn-file span").css({
+    //     position: "relative",
+    //     "top": "20px",
+    //     "font-size": "25px",
        
-      })
-      $(".btn-primary").css({
-        background: "none",
-        color: "#333",
+    //   })
+    //   $(".btn-primary").css({
+    //     background: "none",
+    //     color: "#333",
     
-        "border": "1px solid #ccc",
-        "border-radius": "10px"
-      })
+    //     "border": "1px solid #ccc",
+    //     "border-radius": "10px"
+    //   })
 
 
-      $(".btn-primary").mouseover(e =>{
-        $(this).animate({
-          "background-color": "#ccc"
-        },500)
-      })
+    //   $(".btn-primary").mouseover(e =>{
+    //     $(this).animate({
+    //       "background-color": "#ccc"
+    //     },500)
+    //   })
 
-      $(".file-caption-name, .fileinput-cancel").css({"display": "none"})
+    //   $(".file-caption-name, .fileinput-cancel").css({"display": "none"})
 
      
-    })
+    // })
   }
 
   reloadPage() {

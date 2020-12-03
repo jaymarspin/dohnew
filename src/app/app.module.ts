@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { CertificateComponent } from './pages/certificate/certificate.component';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 import { UsersComponent } from './pages/admin-home/users/users.component';
+import { ReportComponent } from './report/report.component'; 
 // import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UsersComponent } from './pages/admin-home/users/users.component';
     ClientHomeComponent,
     CertComponent,
     CertificateComponent,
-    UsersComponent
+    UsersComponent,
+    ReportComponent, 
   ],
   imports: [
     BrowserModule,

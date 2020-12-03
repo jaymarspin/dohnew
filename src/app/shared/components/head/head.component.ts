@@ -7,6 +7,8 @@ import * as moment from "moment"
   styleUrls: ['./head.component.scss']
 })
 export class HeadComponent implements OnInit {
+
+  
   timestamp:any
   usershow:boolean = false
   constructor(private router:Router) { }
@@ -31,6 +33,11 @@ export class HeadComponent implements OnInit {
    this.router.navigate(['sign'])
 
 
+  }
+
+  menu(nagivate){
+  
+    this.valueChange.emit(nagivate)
   }
 
   out(){

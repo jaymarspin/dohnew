@@ -6,6 +6,8 @@ import pdfjs from 'jspdf';
 import { HttpRequestService } from '../../../services/http-request.service'
 import Swal from 'sweetalert2' 
 import * as $ from 'jquery'
+
+import {  ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-addcert',
   templateUrl: './addcert.component.html',
@@ -30,11 +32,15 @@ doc:any
 
 
    loaded:boolean = false 
-  constructor(public service: ServiceService,private router: Router,public request: HttpRequestService) { }
+  constructor( private cdr: ChangeDetectorRef,public service: ServiceService,private router: Router,public request: HttpRequestService) { }
 
   ngOnInit(): void {
-    
-    this.reloadPage();
+    // setTimeout(e =>{
+    //   this.cdr.detectChanges();
+    // },1000)
+     
+    $.getScript("assets/bootstrap-fileinput/js/fileinput.min.js" )
+    // this.reloadPage();
     // $(e =>{
     //   $("#input-b4").css({
     //     "opacity": 0,
@@ -107,44 +113,101 @@ doc:any
     } else {}
  
     }
-  Submitbtn(){
-    var loader = document.getElementById("cover-spin")
-
-    loader.style.display = "block"
-  
-  
-    let data = {
-      fname: "blank",
-      lname: "blank",
-      address: "blank",
-      pdf: "blank",
-      padfArray: this.pdfbase
-
-    }
-    
-    this.request.postData("add-test.php",data).subscribe(res =>{
-      
-      console.log(res)
-      loader.style.display = "none"
-      let result = res.json()
-      if(result.message == "success"){
-        Swal.fire(
-          'Good job!',
-          'Successfully Uploaded',
-          'success'
-        )
-      }else{
-      
-      Swal.fire({
+    passer = Array()
+    upload(data){
+      this.request.postData("add-test.php",data).subscribe(res =>{
+         
+        let result = res.json()
+        console.log(result)
+        if(result.message == "success"){
+          this.passer.push(1)
+        }else{
+          this.passer.push(0)
+        }
+        this.c += 1
+                if(this.c >= this.pdfbase.length){
+                  this.loader.style.display = "none"
+          let t = $.inArray( "John", this.passer)+""
+          if(parseInt(t) <= -1){
+            Swal.fire(
+                    'Good job!',
+                    'Successfully Uploaded',
+                    'success'
+                  )
+          }else{
+   Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Something went wrong!',
         footer: '<a href>Why do I have this issue?</a>'
       })
-      }
+          }
+        }
+      })
 
       
-    })
+    }
+    loader:any
+    c:any = 0
+  Submitbtn(){
+    this.loader = document.getElementById("cover-spin")
+
+    this.loader.style.display = "block"
+     var c = 0;
+    for(var i =0;i < this.pdfbase.length;i++){
+      
+      let tmp = Array()
+      tmp.push(this.pdfbase[i])
+      
+        
+      let data = {
+        fname: "blank",
+        lname: "blank",
+        address: "blank",
+        pdf: "blank",
+        padfArray: tmp
+  
+      }
+        this.upload(data)
+      
+
+       
+      
+    } 
+
+    
+    // let data = {
+    //   fname: "blank",
+    //   lname: "blank",
+    //   address: "blank",
+    //   pdf: "blank",
+    //   padfArray: this.pdfbase
+
+    // }
+    
+    // this.request.postData("add-test.php",data).subscribe(res =>{
+      
+      
+    //   loader.style.display = "none"
+    //   let result = res.json()
+    //   if(result.message == "success"){
+    //     Swal.fire(
+    //       'Good job!',
+    //       'Successfully Uploaded',
+    //       'success'
+    //     )
+    //   }else{
+      
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Oops...',
+    //     text: 'Something went wrong!',
+    //     footer: '<a href>Why do I have this issue?</a>'
+    //   })
+    //   }
+
+      
+    // })
   }
 
 
@@ -162,7 +225,7 @@ doc:any
             base64: reader.result,
             name: file.name
           }) 
-          console.log(this.pdfbase)
+          
           
       };
 

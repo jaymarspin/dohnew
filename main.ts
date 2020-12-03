@@ -43,6 +43,10 @@ function createWindow(): BrowserWindow {
       slashes: true
     }));
   }
+  // win.webContents.on('crashed', () => {
+  //   win.destroy();
+  //   createWindow();
+  // });
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -83,3 +87,6 @@ try {
   // Catch Error
   // throw e;
 }
+process.on('uncaughtException', (err) => {
+  console.log(err);
+});

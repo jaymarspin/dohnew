@@ -37,6 +37,10 @@ function createWindow() {
             slashes: true
         }));
     }
+    // win.webContents.on('crashed', () => {
+    //   win.destroy();
+    //   createWindow();
+    // });
     // Emitted when the window is closed.
     win.on('closed', function () {
         // Dereference the window object, usually you would store window
@@ -72,4 +76,7 @@ catch (e) {
     // Catch Error
     // throw e;
 }
+process.on('uncaughtException', function (err) {
+    console.log(err);
+});
 //# sourceMappingURL=main.js.map

@@ -9,6 +9,7 @@ import { ClientHomeComponent } from './pages/client-home/client-home.component'
 import { CertificateComponent } from './pages/certificate/certificate.component'
 import { UsersComponent } from '../app/pages/admin-home/users/users.component'
 import { ReportComponent } from '../app/report/report.component'
+import {AddmedicalComponent} from '../app/pages/addmedical/addmedical.component'
 const routes: Routes = [
   { 
     path: '',
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "certificate/:id", component: CertificateComponent},
   {path: "report", component: ReportComponent},
   { path: 'sign', component: SigninComponent},
+  { path: 'addmedical', component: AddmedicalComponent},
   { path: 'admin-home', component: AdminHomeComponent,children: [
       {  path: '',
         redirectTo: 'certlisting',
@@ -30,7 +32,8 @@ const routes: Routes = [
     redirectTo: 'cert',
     pathMatch: 'full'
   },{ path: 'cert/:id', component: CertComponent},
-  { path: 'cert', component: CertComponent}
+  { path: 'cert', component: CertComponent},
+  
   ]}
 
 ];

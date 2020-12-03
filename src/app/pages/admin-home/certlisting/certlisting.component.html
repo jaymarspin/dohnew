@@ -14,7 +14,7 @@
                 <div class="alert alert-dark" role="alert" >
                         There are <strong *ngIf="customers">{{rapidCount}}</strong> RT-PCR TEST right now
                     </div>
-                   <a href='admin-home/addcert'><button class="tblaction upload" >UPLOAD RT-PCR</button></a> 
+                    <button class="tblaction upload" (click)="addcert()" >UPLOAD RT-PCR</button> 
                    <button class="tblaction upload" data-toggle="modal" data-target="#report" >Reports</button>
                 <input type="text" id="search" [(ngModel)]="search" placeholder="Search RT-PCR"> 
                 <button class="tblaction" (click)="searchact()">Search</button>
@@ -84,7 +84,7 @@
                         <!-- <button data-toggle="modal" data-target="#exampleModalCenter"  (click)="familySelected(item.id)">FAMILY</button>  -->
                         <!-- <button (click)="viewCert()">PRINT</button>  -->
                         <!-- <button (click)="cacheData(item)" data-toggle="modal" data-target="#exampleModalLong" >PRINT</button> -->
-                        <a href="{{http.server}}pdfecho.php?file_name={{item.file_name}}" *ngIf="usershow"> <button >VIEW RT-PCR</button></a>
+                  <button *ngIf="usershow" (click)="viewrtpcr(item.file_name)">VIEW RT-PCR</button> 
                      <button (click)="delete(item.id)" *ngIf="usershow">DELETE</button>
   
                    

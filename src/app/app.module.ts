@@ -18,7 +18,9 @@ import { CommonModule } from '@angular/common';
 import { CertificateComponent } from './pages/certificate/certificate.component';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 import { UsersComponent } from './pages/admin-home/users/users.component';
-import { ReportComponent } from './report/report.component'; 
+import { ReportComponent } from './report/report.component';
+import { AddmedicalComponent } from './pages/addmedical/addmedical.component';
+import { SafePipe } from './safe.pipe'; 
 // import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ReportComponent } from './report/report.component';
     CertComponent,
     CertificateComponent,
     UsersComponent,
-    ReportComponent, 
+    ReportComponent,
+    AddmedicalComponent,
+    SafePipe, 
   ],
   imports: [
     BrowserModule,

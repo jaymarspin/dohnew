@@ -9,5 +9,8 @@ export class ServiceService {
   cert:any
   editcert:any
   viewcert:any
+
+
+  pdflink:any
   constructor() { }
 }

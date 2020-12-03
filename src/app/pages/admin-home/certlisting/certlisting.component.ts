@@ -277,6 +277,15 @@ if(this.from && this.to && this.certificate){
 
 }
 
+addcert(){
+  this.router.navigate(["admin-home/addcert"])
+}
+
+viewrtpcr(item){
+  this.service.pdflink = item
+  this.router.navigate(['addmedical'])
+}
+
 // rtpcr(){
 //   this.router.navigate(["admin-home/"])
 // }

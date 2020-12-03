@@ -24,6 +24,8 @@ function createWindow(): BrowserWindow {
       enableRemoteModule : true // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
     },
   });
+  win.setMenu(null)
+  // win.setIcon(path.join(__dirname, '/src/assets/bagua_mother_final.png'));
 
   if (serve) {
 

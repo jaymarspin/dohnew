@@ -1,46 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
-
-// NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { HomeModule } from './home/home.module';
-import { DetailModule } from './detail/detail.module';
-
 import { AppComponent } from './app.component';
-
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
+import { SigninComponent } from './pages/signin/signin.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {HttpModule} from '@angular/http';
+import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
+import { HeadComponent } from './shared/components/head/head.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import { FormsModule } from '@angular/forms';
+import { AddcertComponent } from './pages/admin-home/addcert/addcert.component';
+import { CertlistingComponent } from './pages/admin-home/certlisting/certlisting.component';
+import { ClientHomeComponent } from './pages/client-home/client-home.component';
+import { CertComponent } from './pages/client-home/cert/cert.component';
+import { CommonModule } from '@angular/common';
+import { CertificateComponent } from './pages/certificate/certificate.component';
+import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+import { UsersComponent } from './pages/admin-home/users/users.component';
+// import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    SigninComponent,
+    AdminHomeComponent,
+    HeadComponent,
+    MenuComponent,
+    AddcertComponent,
+    CertlistingComponent,
+    ClientHomeComponent,
+    CertComponent,
+    CertificateComponent,
+    UsersComponent
+  ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    CoreModule,
-    SharedModule,
-    HomeModule,
-    DetailModule,
     AppRoutingModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    HttpClientModule,
+    HttpModule,
+    FormsModule,
+    CommonModule,
+    PdfJsViewerModule,
+    // NgxQRCodeModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

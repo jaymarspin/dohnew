@@ -1,0 +1,166 @@
+<div class="main-wrapper" id="canvas">
+    <div id="cover-spin"></div>
+        <!-- <app-modal [method]="method" [showId] = "showId" (done)='doneChange($event)'></app-modal> -->
+             
+        <div class="action-div" id="contentToConvert" >
+                <div class="alert alert-dark" role="alert" >
+                        There are <strong *ngIf="user">{{userCount}}</strong> users right now
+                    </div>
+      
+                <input type="text" id="search" [(ngModel)]="search" placeholder="Search Residents">
+                <button class="tblaction" (click)="searchact()">Search</button>
+                <button class="tblaction" (click)="refreshed()" >Refresh</button>
+   
+                <button class="useradd btn btn-success" data-toggle="modal" data-target="#usermodal">Add User</button>
+            
+        </div>
+        <!-- <select class="custom-select" id="selector" [(ngModel)]="filterCustomer" (change)="changeFilter()">
+          <option value="all" selected>all</option>
+          <option value="active">active</option>
+          <option value="paid" selected>paid</option>
+          <option value="repo">repo</option>
+          
+         
+      </select> -->
+       
+    <!-- <div class="pager">
+      <ul>
+        <li><select class="custom-select" id="selector" class="selector2" [(ngModel)]="limit" (change)="changeLimit()">
+          <option value="100">100 results</option>
+          <option value="250">250 results</option>
+          <option value="500">500 results</option>
+          <option value="1000">1000 results</option>
+          <option value="5000">5000 results</option>
+          <option value="13000">13000 results</option>
+          <option value="0">all results</option>
+        </select></li>
+       
+      </ul>
+    </div> -->
+  
+    
+        <table class="table"  >
+                <thead class="thead-dark">
+                  <tr>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>USERNAME</th>
+                   
+                    <th>DATE_CREATED</th>
+                    <th>ACTION</th>
+                    
+                   
+                    
+                   
+                    <!-- <th>EMPLOYMENT STATUS</th> -->
+                    <!-- <th>SALARY</th> -->
+                    
+                    
+                    
+                    
+                    
+                    <!-- <th>Actions</th>  -->
+                    
+                  </tr>
+                </thead>
+                
+   
+                <tbody *ngIf="user">
+                  <tr *ngFor="let item of user;index as i" [attr.data-index]="i" >
+                    <td>{{item.name}}</td>
+                    <td>{{item.lname}}</td>
+                    <td>{{item.username}}</td>
+                 
+                    <td>{{item.date_created}}</td>
+                    <td><button class="btn btn-danger" (click)="delete(item.id)">DELETE</button></td>
+                    
+                    <!-- <td>{{item.employment_status}}</td>  -->
+                    <!-- <td>{{item.voters_status}}</td>   -->
+                    
+                  <!-- <td>  -->
+                    <!-- <button data-toggle="modal" (click)="editResident(item)">EDIT</button>  -->
+                        <!-- <button data-toggle="modal" data-target="#exampleModalCenter"  (click)="familySelected(item.id)">FAMILY</button>  -->
+                        <!-- <button (click)="viewCert()">PRINT</button>  -->
+                        <!-- <button (click)="cacheData(item)" data-toggle="modal" data-target="#exampleModalLong" >PRINT</button> -->
+                        <!-- <a href="http://192.168.1.16/minhealth/pdfecho.php?file_name={{item.file_name}}"> <button >VIEW RT-PCR</button></a> -->
+                        
+  
+                   
+                    <!-- </td> -->
+                  </tr>
+             
+               
+                  
+                 
+                  
+                 
+                  <!-- <th>EMPLOYMENT STATUS</th> -->
+                  <!-- <th>SALARY</th> -->
+                  
+                  
+             
+
+
+               
+
+
+
+              </tbody>
+
+            </table>
+            <div class="page showpage" *ngIf="!searchpass">
+              <div class="pagestablabel" ></div>Showing {{page}} of {{pagebtn.length}} pages&nbsp;&nbsp;<button *ngFor="let item of pagebtn" (click)="pager(item)">{{item}}</button>
+
+            </div>
+
+
+</div>
+
+
+
+
+ 
+
+
+<div class="modal fade" id="usermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">ADDING USERS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row"> 
+          <div class="col">
+            <label>First Name</label>
+            <input type="text" [(ngModel)]="fname" class="form-control">
+          </div>
+          <div class="col">
+            <label>Last Name</label>
+            <input type="text" [(ngModel)]="lname" class="form-control">
+          </div>
+         
+        </div>
+
+        <div class="row"> 
+          <div class="col">
+            <label>Username</label>
+            <input type="text" [(ngModel)]="username" class="form-control">
+          </div>
+          <div class="col">
+            <label>Password</label>
+            <input type="text" [(ngModel)]="password" class="form-control">
+          </div>
+         
+        </div>
+    
+      
+  <button type="button"   data-dismiss="modal" class="btn btn-primary" (click)="adduser()" style="padding-right:60px">Submit</button>
+ 
+      </div>
+
+    </div>
+  </div>
+</div>

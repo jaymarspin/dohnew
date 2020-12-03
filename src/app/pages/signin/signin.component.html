@@ -1,0 +1,61 @@
+<div id="cover-spin"></div>
+
+<div class="wrap">
+
+
+
+
+    <div class="row">
+     
+      <div class="col">
+         <div class="loginform">
+           <div class="wrapper">
+          
+            <div class="row" style="margin-top: 40px;">
+              <div class="col">
+                <img draggable="false" src="assets/logo/barmm-logo.png"/> 
+              </div>
+              <div class="col">
+                <img  draggable="false" src="assets/logo/moh-logo.png" />
+              </div>
+            </div>
+           <div class="row" style="position: relative; margin-top: -50px;">
+
+             <div class="col" style="margin-top:60px;">
+
+
+             
+
+                <input type="text" placeholder="Username" [(ngModel)]="username" style="position: relative; top: 20px;"/>
+
+
+             </div>
+           </div>
+
+           <div class="row login">
+            <div class="col">
+
+               <input type="password"  placeholder="Password" [(ngModel)]="password" style="position: relative; top: 10px;"/>
+
+
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+
+               <input   (click)="login()"   type="submit" class="btn btn-success" value="LOGIN" />
+
+
+            </div>
+          </div>
+
+         </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>

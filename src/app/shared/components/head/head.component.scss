@@ -1,0 +1,84 @@
+.head{
+    height: 80px;
+    background-color: #fff;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    width: 100%;
+    z-index: 10;
+  
+}
+
+img{
+    margin: 10px;
+    height: 70px;
+    width: 70px;
+   position: relative;
+   top: -5px;
+}
+#logo{
+    position: relative;
+}
+p{
+    
+    position: relative;
+    top: -70px;
+    margin-left: 100px;
+    text-align: left;
+    font-size: 24px;
+    font-weight: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333;
+}
+#logo ul{
+    list-style-type: none;
+    position: relative;
+    top: 20px;
+    text-align: right;
+   
+    
+    background-image: linear-gradient(to right, #2d7540 , #5ced83);
+    border-radius: 5px 0px 0px 5px;
+    float: right;
+    clear: right;
+    padding-right: 14px;
+}
+#logo ul li{
+    position: relative;
+    display: inline;
+    padding: 10px;
+    
+    
+    left: 20px;
+    color: white;
+  
+}
+.sign{
+    position: absolute;
+  
+    float: left;
+
+    small{
+        u{
+            color: #333;
+        }
+
+    }
+}
+small{
+    margin-right: 12px;
+    position: relative;
+    top: 12px;
+    left: 15px;
+    font-weight: bold;
+   
+}
+small:hover{
+    color: grey;
+    cursor: pointer;
+    opacity: 0.5;
+}
+small:link{
+    color:slategrey
+}

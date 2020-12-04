@@ -5,7 +5,83 @@
 
 <!-- <ng2-pdfjs-viewer #pdfViewerOnDemand [pdfSrc]="photoURL()" (afterprint)="testAfterPrint()"></ng2-pdfjs-viewer> -->
 
-<object [data]="sample + '#toolbar=0&navpanes=0' | safe: 'resourceUrl'" type="application/pdf" width="50%" height="100%"></object>
+<object [data]="sample + '#toolbar=0&navpanes=0' | safe: 'resourceUrl'" type="application/pdf" width="50%" height="100%" style="float: left;clear: left;"></object>
+
+<div class="form-wrapper">
+
+   
+        <h3 style="text-align: center; top:-20px; ">MEDICAL CERTIFICATE</h3>
+      <h4>Please Fill the Form</h4>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">First Name</label>
+          <input type="text" [(ngModel)]="fname" class="form-control"     >
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Middle Name</label>
+          <input required type="text" [(ngModel)]="mname" class="form-control"   >
+        </div>
+    
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Last Name</label>
+          <input type="text" class="form-control" [(ngModel)]="lname" name="lname"  >
+        </div>
+        <div class="form-group col-md-6 ">
+          <label for="inputPassword4">Age</label>
+          <input required type="number" [(ngModel)]="age" class="form-control"    >
+        </div>
+      </div>
+      
+      <div class="form-group ">
+        <label for="sex">Sex</label>
+    
+        <select class="form-control" [(ngModel)]="sex">
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+        </select>
+      </div>
+      <div class="form-group" >
+        <label for="Address">Address </label>
+        <input required type="text" [(ngModel)]="address" class="form-control"   >
+      </div>
+    
+     
+      <div class="form-group">
+        <div class="form-group">
+          <label for="impression">Impression</label>
+    
+          <textarea name="impression" [(ngModel)]="impression" class="form-control" cols="130" rows="3"></textarea>
+        </div>
+    
+      </div>
+      <div class="form-group">
+    
+          <div class="form-group">
+              <label for="impression">Remarks</label>
+    
+              <textarea  class="form-control" [(ngModel)]="remarks" cols="130" rows="3"></textarea>
+    
+            </div>
+    
+      </div>
+    
+      <div class="form-group">
+    
+        <div class="form-group">
+            <label for="impression">Issuing date</label>
+    
+            <input type="date" [(ngModel)]="issuingdate" class="form-control" cols="130" rows="2" />
+    
+          </div>
+    
+    </div>
+      <button type="button" (click)="addmedical()" class="btn btn-primary submit-wrapper"  >Submit</button>
+  </div>
+    
+</div>
+
+
+
 <div class="back-btn-wrapper" (click)="goback()">
 
     <i class="fa fa-arrow-left"></i>

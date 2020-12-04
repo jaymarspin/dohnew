@@ -42,4 +42,18 @@
         color: #dedede;
     }
     transition: all 1s;
+}.form-wrapper{ 
+
+    width: 50%;
+    float: left;
+    padding: 80px;
+    height: 100vh;
+    border-left: 1px solid #ccc;
+    .submit-wrapper{
+        position: relative;
+        display: block;
+        margin: auto;
+        width: 200px;
+        text-align: center;
+    }
 }

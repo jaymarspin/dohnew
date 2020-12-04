@@ -12,5 +12,6 @@ export class ServiceService {
 
 
   pdflink:any
+  testid:any
   constructor() { }
 }

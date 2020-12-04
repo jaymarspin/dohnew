@@ -7,7 +7,7 @@
                         There are <strong *ngIf="user">{{userCount}}</strong> users right now
                     </div>
       
-                <input type="text" id="search" [(ngModel)]="search" placeholder="Search Residents">
+                <input type="text" id="search" [(ngModel)]="search" (keyup.enter)="searchact()" placeholder="Search Residents">
                 <button class="tblaction" (click)="searchact()">Search</button>
                 <button class="tblaction" (click)="refreshed()" >Refresh</button>
    
@@ -153,6 +153,21 @@
             <label>Password</label>
             <input type="text" [(ngModel)]="password" class="form-control">
           </div>
+         
+        </div>
+
+        <div class="row"> 
+          <div class="col">
+            <label>User Type: </label>
+            
+            <select [(ngModel)]="usertype" class="form-control">
+              <option value="2" selected>Can Import RT-PCR ONLY</option>
+              <option value="3">Can Import RT-PCR and can create medical certificate ONLY</option>
+            </select>
+
+            
+          </div>
+          
          
         </div>
     

@@ -15,9 +15,9 @@
                         There are <strong *ngIf="customers">{{rapidCount}}</strong> RT-PCR TEST right now
                     </div>
                     <button class="tblaction upload" (click)="addcert()" >UPLOAD RT-PCR</button> 
-                   <button class="tblaction upload" data-toggle="modal" data-target="#report" >Reports</button>
-                <input type="text" id="search" [(ngModel)]="search" placeholder="Search RT-PCR"> 
-                <button class="tblaction" (click)="searchact()">Search</button>
+                   <button class="tblaction upload" data-toggle="modal" data-target="#report" *ngIf="userType == 1">Reports</button>
+                <input type="text" id="search" [(ngModel)]="search" (keyup.enter)="searchact()" placeholder="Search RT-PCR"> 
+                <button class="tblaction" (click)="searchact()" >Search</button>
                 <button class="tblaction" (click)="refreshed()" >Refresh</button>
    
                
@@ -52,6 +52,7 @@
                 <thead class="thead-dark">
                   <tr>
                     <th>Date Uploaded</th> 
+                    <th>Date Collected</th> 
                     <th>NAME</th>
                     
                    
@@ -71,9 +72,10 @@
                 
    
                 <tbody *ngIf="rapid">
-                  <tr *ngFor="let item of rapid;index as i" [attr.data-index]="i" >
-                    <td>{{item.date_created}}</td>
-                    <td>{{item.name}}</td>
+                  <tr *ngFor="let item of rapid;index as i" [attr.data-index]="i"  >
+                    <td (click)="viewrtpcr(item.file_name,item.id)">{{item.date_created}}</td>
+                    <td (click)="viewrtpcr(item.file_name,item.id)">{{item.date_collected}}</td>
+                    <td (click)="viewrtpcr(item.file_name,item.id)">{{item.name}}</td>
              
                     
                     <!-- <td>{{item.employment_status}}</td>  -->
@@ -84,8 +86,9 @@
                         <!-- <button data-toggle="modal" data-target="#exampleModalCenter"  (click)="familySelected(item.id)">FAMILY</button>  -->
                         <!-- <button (click)="viewCert()">PRINT</button>  -->
                         <!-- <button (click)="cacheData(item)" data-toggle="modal" data-target="#exampleModalLong" >PRINT</button> -->
-                  <button *ngIf="usershow" (click)="viewrtpcr(item.file_name)">VIEW RT-PCR</button> 
-                     <button (click)="delete(item.id)" *ngIf="usershow">DELETE</button>
+                
+                  <button data-toggle="modal" data-target="#medicalhistory" *ngIf="userType == 1 || userType == 3" (click)="medicalhistory(item)">MEDICAL CERTIFICATES</button>
+                     <button (click)="delete(item.id)" *ngIf="userType == 1">DELETE</button>
   
                    
                     </td>
@@ -162,3 +165,66 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="medicalhistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Medical Certificates history</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table"  >
+          <thead class="thead-dark">
+            <tr>
+              <th>Fullname</th> 
+         
+              
+         
+              <th>IMPRESSIONS</th>
+              <th>REMARKS</th>
+              <th>DATE ISSUED</th>
+              <!-- <th>Actions</th> -->
+              <!-- <th>EMPLOYMENT STATUS</th> -->
+              <!-- <th>SALARY</th> -->
+              
+              
+              
+              
+          
+            </tr>
+          </thead>
+          
+
+          <tbody *ngIf="medicals">
+            <tr (click)="viewcert(item)" data-dismiss="modal" *ngFor="let item of medicals;index as i" [attr.data-index]="i" title="ADDRESS:{{item.address}}, SEX: {{item.sex}}, AGE: {{item.age}}, DATE UPLOADED: {{item.date_created}}">
+              <td>{{item.fname}} {{item.mname}}. {{item.lname}}</td>
+              <td [innerHTML]="item.impression"> </td>
+              <td [innerHTML]="item.remarks"></td>
+              <td>{{item.issued}}</td>
+   
+            </tr>
+       
+         
+
+
+
+         
+
+
+
+        </tbody>
+
+      </table>
+       
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+

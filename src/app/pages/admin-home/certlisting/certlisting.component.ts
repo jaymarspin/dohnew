@@ -3,10 +3,9 @@ import pdfjs from 'jspdf';
  import { Router } from '@angular/router'
  import { ServiceService } from '../../../services/service.service'
  import { HttpRequestService} from '../../../services/http-request.service'
-import * as moment from "moment"
+ 
 
-import Swal from 'sweetalert2'
-import qrcode from 'yaqrcode'
+import Swal from 'sweetalert2' 
 
 import {MedicalService}  from '../../../report-print/medical.service'
 @Component({
@@ -54,17 +53,19 @@ export class CertlistingComponent implements OnInit {
    from:any
 
    to:any
+
+   userType:any
   constructor(private medical: MedicalService,private router: Router,public service: ServiceService,public http: HttpRequestService) {
     this.page = 1
     this.limit = 50
     this.pagebtn = Array()
+    this.certificate = "medical"
     this.certificateSelect.push({value: "medical", title: "Medical Certificate"})
 
    }
   ngOnInit(): void {
-
-    if(localStorage.getItem("role") == "1") this.usershow = true
-
+ 
+    this.userType = localStorage.getItem("role")
     this.getdata(this.page)
 
 
@@ -222,28 +223,28 @@ this.doc.text('Republic of the Philippines',this.doc.internal.pageSize.getWidth(
 
 
 this.doc.setFont('Times New Roman','normal');
-this.doc.setFontSize(14);
-this.doc.text('City Government of Cotabato',this.doc.internal.pageSize.getWidth()/2, 35, { align: "center" });
+this.doc.setFontSize(18);
+this.doc.text('BARMM',this.doc.internal.pageSize.getWidth()/2, 35, { align: "center" });
 
 
 
 
 this.doc.setFont('Times New Roman','bold');
 this.doc.setFontSize(14);
-this.doc.text('Office of the Punong Barangay',this.doc.internal.pageSize.getWidth()/2, 40, { align: "center" }),this.doc.setFontSize(13);
+this.doc.text('MINISTRY OF HEALTH',this.doc.internal.pageSize.getWidth()/2, 40, { align: "center" }),this.doc.setFontSize(13);
 
 
-this.doc.setFont('Times New Roman','normal');
-this.doc.setFontSize(14);
-this.doc.text('Barangay Bagua Mother',this.doc.internal.pageSize.getWidth()/2, 45, { align: "center" });
+// this.doc.setFont('Times New Roman','normal');
+// this.doc.setFontSize(14);
+// this.doc.text('Barangay Bagua Mother',this.doc.internal.pageSize.getWidth()/2, 45, { align: "center" });
 
-this.doc.setFont('Times New Roman','normal');
-this.doc.setFontSize(14);
-this.doc.text('Cotabato City',this.doc.internal.pageSize.getWidth()/2, 50, { align: "center" });
+// this.doc.setFont('Times New Roman','normal');
+// this.doc.setFontSize(14);
+// this.doc.text('Cotabato City',this.doc.internal.pageSize.getWidth()/2, 50, { align: "center" });
 
-this.doc.setFont('Times New Roman','normal');
-this.doc.setFontSize(14);
-this.doc.text('Tel No.557-1885',this.doc.internal.pageSize.getWidth()/2, 55, { align: "center" });
+// this.doc.setFont('Times New Roman','normal');
+// this.doc.setFontSize(14);
+// this.doc.text('Tel No.557-1885',this.doc.internal.pageSize.getWidth()/2, 55, { align: "center" });
 
 
 this.doc.setFont('Calibri','bold');
@@ -261,7 +262,7 @@ if(this.from && this.to && this.certificate){
   }
   this.http.postData("get-report.php",data).subscribe(res =>{
 
-  
+    console.log(res)
      let result = res.json()
     
 
@@ -277,13 +278,37 @@ if(this.from && this.to && this.certificate){
 
 }
 
+viewcert(item){
+  if(this.userType == 1){
+  this.router.navigate(["certificate/"+item.id])
+  }
+}
+
 addcert(){
   this.router.navigate(["admin-home/addcert"])
 }
 
-viewrtpcr(item){
-  this.service.pdflink = item
-  this.router.navigate(['addmedical'])
+viewrtpcr(item,testid){
+  if(this.userType == 1 || this.userType == 3){
+    this.service.pdflink = item
+    this.service.testid = testid
+    this.router.navigate(['addmedical'])
+  }
+  
+   
+}
+
+
+medicals:any
+medicalhistory(item){
+  this.medicals = Array()
+  this.http.getData("get-medical-history.php?id="+item.id).subscribe(res =>{
+    this.medicals = res.json()
+  })
+}
+
+addInput() {
+  alert("awdawd")
 }
 
 // rtpcr(){

@@ -71,14 +71,14 @@
         <input type="file"  class="form-control" name="pdf"  >
       </div> -->
       <div class="form-group col-12" >
-      <input id="input-b4" class="form-control"   name="input-b3[]" data-allowed-file-extensions='["pdf"]'  type="file" class="file" multiple  (change)="handleUpload($event)"
+      <input id="input-b4" class="form-control" name="input-b3[]" data-allowed-file-extensions='["pdf"]'  type="file" class="file" multiple  (change)="handleUpload($event)"
     data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
   </div>
   
     </div>
-
-
-    <button type="submit" (click)="Submitbtn()" style="width: 50%;position: relative;margin: auto;left: 25%;"  class="btn btn-success">Submit</button>
+    <label>DATE COLLECTED</label>
+    <input type="date" id="datecollected" class="form-control" />
+    <button type="submit" (click)="Submitbtn()" style="width: 50%;position: relative;margin: auto;left: 25%;margin-top: 10px"  class="btn btn-success">Submit</button>
 
 
   </form>

@@ -26,7 +26,13 @@ export class MedicalService {
      
       var columns = [
 
-        {title: "ID", key: "medical",},
+        {title: "Full Name", key: "fullname"},
+        {title: "Address", key: "address"},
+        {title: "Impression", key: "impression"},
+        {title: "Remarks", key: "remarks"},
+        {title: "Date Issued", key: "issued"},
+        {title: "Date Created", key: "date_created"},
+         
         
     ];
    

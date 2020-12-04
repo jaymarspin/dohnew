@@ -32,6 +32,7 @@ doc:any
 
 
    loaded:boolean = false 
+   datecollected:any = ""
   constructor( private cdr: ChangeDetectorRef,public service: ServiceService,private router: Router,public request: HttpRequestService) { }
 
   ngOnInit(): void {
@@ -96,6 +97,13 @@ doc:any
 
      
     // })
+
+    // $(() =>{
+    //   $("button.fileinput-remove, .hidden-xs").click(() =>{
+    //     alert("awdawdwa")
+    //     // this.pdfbase = Array()
+    //   })
+    // })
   }
 
   reloadPage() {
@@ -139,7 +147,7 @@ doc:any
         icon: 'error',
         title: 'Oops...',
         text: 'Something went wrong!',
-        footer: '<a href>Why do I have this issue?</a>'
+        footer: ' '
       })
           }
         }
@@ -150,30 +158,44 @@ doc:any
     loader:any
     c:any = 0
   Submitbtn(){
-    this.loader = document.getElementById("cover-spin")
 
-    this.loader.style.display = "block"
-     var c = 0;
-    for(var i =0;i < this.pdfbase.length;i++){
-      
-      let tmp = Array()
-      tmp.push(this.pdfbase[i])
-      
+   
+    if($("#datecollected").val().trim() != "" && this.pdfbase.length > 0){
+      this.loader = document.getElementById("cover-spin")
+
+      this.loader.style.display = "block"
+       var c = 0;
+      for(var i =0;i < this.pdfbase.length;i++){
         
-      let data = {
-        fname: "blank",
-        lname: "blank",
-        address: "blank",
-        pdf: "blank",
-        padfArray: tmp
+        let tmp = Array()
+        tmp.push(this.pdfbase[i])
+        
+          
+        let data = {
+          fname: "blank",
+          lname: "blank",
+          address: "blank",
+          pdf: "blank",
+          date_collected: $("#datecollected").val(),
+          padfArray: tmp
+    
+        }
+          this.upload(data)
+        
   
+         
+        
       }
-        this.upload(data)
-      
-
-       
-      
-    } 
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please enter date collected and make sure you have at least one RT-PCR ready for upload',
+        footer: ' '
+      })
+    }
+    
+     
 
     
     // let data = {
@@ -213,7 +235,7 @@ doc:any
 
   handleUpload(event) {
      
-    $("body").find(".kv-zoom-cache").remove();
+      
     for(var i =0;i < event.target.files.length;i++){
        
       const file = event.target.files[i];

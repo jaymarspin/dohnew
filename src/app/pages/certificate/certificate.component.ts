@@ -28,6 +28,7 @@ export class CertificateComponent implements OnInit {
 
    fname:string
    lname:string
+   mname:string
    age:string
    sex:string
    issuing:string
@@ -85,6 +86,7 @@ export class CertificateComponent implements OnInit {
       let result = res.json()
       this.fname = result.fname
       this.lname = result.lname
+      this.mname = result.mname
       this.age = result.age
       this.sex = result.sex
       this.address = result.address
@@ -241,7 +243,7 @@ export class CertificateComponent implements OnInit {
     this.doc.setFont('Helvetica','normal');
     this.doc.setFontSize(11);
     this.doc.setTextColor(0, 0, 0);
-    this.doc.text("Name            :   "+this.fname+" "+this.lname+"    ",20,110);
+    this.doc.text("Name            :   "+this.fname+" "+this.mname+". "+this.lname,20,110);
 
 
     this.doc.setFont('Helvetica','normal');
@@ -253,7 +255,7 @@ export class CertificateComponent implements OnInit {
     this.doc.setFont('Helvetica','normal');
     this.doc.setFontSize(11);
     this.doc.setTextColor(0, 0, 0);
-    this.doc.text("Sex               :   "+this.sex+"",20,120);
+    this.doc.text("Sex               :    "+this.sex+"",20,120);
 
 
 
@@ -280,7 +282,7 @@ let tmp = this.baseY
     this.doc.text( "Address        :                      ",20,tmp);
 
 
-    this.baseY +=15
+    this.baseY +=10
 
     
       tmp = this.baseY
@@ -316,7 +318,7 @@ let tmp = this.baseY
     // this.doc.setFontSize(11);
     // this.doc.setTextColor(0, 0, 0);
     // this.doc.text("                          "+this.remarks+"",20,165);
-    this.baseY += 20
+    this.baseY += 5
     tmp = this.baseY
     this.doc.setFont('Helvetica','bold');
     this.doc.setFontSize(11);
@@ -338,7 +340,7 @@ let tmp = this.baseY
 
   
      
-  this.baseY += 40
+  this.baseY += 20
     this.doc.setFont('Helvetica','bold');
     this.doc.setFontSize(11);
     this.doc.setTextColor(0, 0, 0);
@@ -373,8 +375,8 @@ let tmp = this.baseY
           size: 500
       });
 
-      this.baseY += 10
-      this.doc.addImage(base64, 'png'  ,145, 230, 45, 45);
+      this.baseY += 15
+      this.doc.addImage(base64, 'png'  ,145, this.baseY, 45, 45);
 
 
 

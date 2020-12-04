@@ -32,6 +32,7 @@ export class UsersComponent implements OnInit {
     lname:any
     username:any
     password:any
+    usertype:any = 2
  
 
   constructor(private router: Router,public service: ServiceService,public http: HttpRequestService) {
@@ -131,11 +132,13 @@ export class UsersComponent implements OnInit {
      fname: this.fname,
      lname: this.lname,
      username: this.username,
-     password: this.password
+     password: this.password,
+     usertype: this.usertype
    }
    console.log(data)
    
    this.http.postData("add-user.php",data).subscribe(res =>{
+     console.log(res)
      let result = res.json()
 
      if(result.message == "success"){

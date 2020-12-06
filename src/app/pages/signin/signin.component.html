@@ -1,6 +1,39 @@
 <div id="cover-spin"></div>
-
-<div class="wrap">
+<div class="row header">
+  <div class="col-3 imgwrapper">
+    <img  draggable="false" class="left" src="assets/logo/moh-logo.png" />
+  </div>
+  <div class="col-6 ">
+    <h1>Ministry of Health</h1>
+    <h4>Bangsamoro Autonomous Region in Muslim Mindanao</h4>
+  </div>
+  <div class="col-3 imgwrapper">
+    <img draggable="false" class="right" src="assets/logo/barmm-logo.png"/> 
+  </div>
+</div>
+<div class="row form">
+  <div class="col-12">
+    <div class="card">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username" (keyup.enter)="login()" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="password" class="form-control"  placeholder="Password" [(ngModel)]="password" (keyup.enter)="login()"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input   (click)="login()" type="button" class="btn btn-success" value="LOGIN" />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- <div class="wrap">
 
 
 
@@ -58,4 +91,4 @@
 
 
 
-  </div>
+  </div> -->

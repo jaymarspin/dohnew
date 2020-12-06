@@ -1,47 +1,25 @@
 <div id="wrapper">
     
-    <ul>
-      
-   
-    
-
-    
-   <!-- <a href="#">
-    <li (click)="menu('addcert')"> 
-            
-      ADD RT-PCR
- 
-</li>
-   </a> -->
-
-<li id="icon-wrapper">
-        <img draggable="false" src="assets/logo/barmm-logo.png"/> 
-  </li>
-  <li id="icon-wrapper">
-    <img  draggable="false" src="assets/logo/moh-logo.png" />
-</li>
-<!-- <li  (click)="menu('certlisting')">
-        LISTING OF RT-PCR
-        
-    
-</li> -->
-<!-- 
-<li *ngIf="usershow" (click)="menu('user')">
-  USERS
-  
- 
-</li> -->
-
- 
 
 
+        <div class="row menu-wrap">
+                <div class="col-3">
 
-<!-- <li (click)="collectibles()">
-        Sign Out
-        
-        <i class="fa fa-list"></i>
-</li> -->
-    </ul>
+                        <img  draggable="false" src="assets/logo/moh-logo.png" style="float: right; " />
+                </div>
+
+                <div class="col-6">
+                        <h1 >Ministry of Health</h1>
+                        <h2>Bangsamoro Autonomous Region in Muslim Mindanao</h2> 
+                        <ul class="menu">
+                                <li (click)="menu('certlisting')" style="color: #333;">HOME</li>
+                                <li *ngIf="usershow" (click)="menu('extension')" style="color: #333;">MEDICAL CERTIFICATES</li>
+                                <li *ngIf="usershow" (click)="menu('user')" style="color: #333;">USERS</li>
+                                <li (click)="signout()" style="color: #333;">SIGN OUT</li>
+                        </ul>
+                </div>
+                <div class="col-3"><img draggable="false" src="assets/logo/barmm-logo.png" style="float: left; "/> </div>
+        </div>
 </div>
-
+  
  

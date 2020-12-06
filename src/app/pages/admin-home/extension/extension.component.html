@@ -11,16 +11,19 @@
           <!-- <app-modal [method]="method" [showId] = "showId" (done)='doneChange($event)'></app-modal> -->
                
           <div class="action-div" id="contentToConvert" >
-                  <div class="alert alert-dark" role="alert" >
-                          There are <strong *ngIf="customers">{{medicalCount}}</strong> unprinted medical certificates from extension right now
+                  <div class="alert alert-dark" role="alert" *ngIf="filter == 1">
+                          There are <strong *ngIf="customers">{{medicalCount}}</strong> medical certificates from extension office right now
                       </div>
+                      <div class="alert alert-dark" role="alert" *ngIf="filter == 0">
+                        There are <strong *ngIf="customers">{{medicalCount}}</strong> medical certificates overall right now
+                    </div>
                   
                   <input type="text" id="search" [(ngModel)]="search" (keyup.enter)="searchact()" placeholder="Search medical certificate"> 
                   <button class="tblaction" (click)="searchact()" >Search</button>
                   <button class="tblaction" (click)="refreshed()" >Refresh</button>
                   <ul>
-                    <li><input type="radio" name="filter" value="1" (click)="changedfilter($event)">All</li>
-                    <li style="margin-right: 20px;"><input type="radio" name="filter" value="0" (click)="changedfilter($event)" checked> Extension Office</li>
+                    <li><input type="radio" name="filter" value="0" (click)="changedfilter($event)">All</li>
+                    <li style="margin-right: 20px;"><input type="radio" name="filter" value="1" (click)="changedfilter($event)" checked> Extension Office</li>
                       <li><div class="box yellow"></div> Yellow = unprinted</li>
                       <li><div class="box white"></div> white = printed</li>
                   </ul>
@@ -56,11 +59,11 @@
           <table class="table"  >
                   <thead class="thead-dark">
                     <tr>
-                      <th>DATE CREATED</th> 
-                      <th>FIRST NAME</th> 
-                      <th>MIDDLE INITIAL</th>
-                      <th>LAST NAME</th>
-                      <th>IMPRESSION</th>
+                      <th>Date Created</th> 
+                      <th>First Name</th> 
+                      <th>Middle Initial</th>
+                      <th>Last Name</th>
+                      <th>Impression</th>
                       
                      
                       
@@ -142,30 +145,7 @@
         </div>
         <div class="modal-body">
   
-         
-          <div class="row" >
-            <div class="col">
-              <label>Select Certificate:</label>
-              <select [(ngModel)]="certificate" class="form-control" >
-                <option value="" disabled selected></option>
-                        <option *ngFor="let item of certificateSelect" [value]="item.value" >{{item.title}}</option>
-  
-  
-              </select>
-            </div>
-          </div>
-          <div class="row" >
-            <div class="col">
-              <label>From:</label>
-              <input type="date" [(ngModel)]="from" class="form-control">
-            </div>
-            <div class="col">
-              <label>To:</label>
-              <input type="date" [(ngModel)]="to" class="form-control">
-            </div>
-          </div>
           
-           <button class="btn btn-primary submitreport" style="margin-top: 10px;" (click)="report()" data-dismiss="modal">CONTINUE</button>
         </div>
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

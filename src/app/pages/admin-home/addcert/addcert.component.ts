@@ -39,8 +39,14 @@ doc:any
     // setTimeout(e =>{
     //   this.cdr.detectChanges();
     // },1000)
+    $(() =>{
+      
+       
+      $.getScript("assets/bootstrap-fileinput/js/fileinput.min.js" )
+      
      
-    $.getScript("assets/bootstrap-fileinput/js/fileinput.min.js" )
+    })
+    
     // this.reloadPage();
     // $(e =>{
     //   $("#input-b4").css({
@@ -179,6 +185,7 @@ doc:any
           pdf: "blank",
           userid: localStorage.getItem("userid"),
           date_collected: $("#datecollected").val(),
+          date_expiry: $("#dateexpiry").val(),
           padfArray: tmp
     
         }
@@ -236,7 +243,13 @@ doc:any
 
 
   handleUpload(event) {
-     
+     $(".harang").css({display: "none"})
+
+     $(".fileinput-remove, fileinput-remove-button").click(() =>{
+      $(".harang").css({display: "block"})
+      delete(this.pdfbase)
+      this.pdfbase = Array()
+     })
       
     for(var i =0;i < event.target.files.length;i++){
        

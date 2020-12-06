@@ -53,7 +53,8 @@
                   <tr>
                     <th>Date Uploaded</th> 
                     <th>Date Collected</th> 
-                    <th>NAME</th>
+                    <th>Expiration Date</th> 
+                    <th>Name</th>
                     
                    
                     
@@ -75,6 +76,7 @@
                   <tr *ngFor="let item of rapid;index as i" [attr.data-index]="i"  >
                     <td (click)="viewrtpcr(item.file_name,item.id)">{{item.date_created}}</td>
                     <td (click)="viewrtpcr(item.file_name,item.id)">{{item.date_collected}}</td>
+                    <td (click)="viewrtpcr(item.file_name,item.id)">{{item.date_expiry}}</td>
                     <td (click)="viewrtpcr(item.file_name,item.id)">{{item.name}}</td>
              
                     

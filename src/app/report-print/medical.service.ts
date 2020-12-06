@@ -27,7 +27,7 @@ export class MedicalService {
       var columns = [
 
         {title: "Full Name", key: "fullname"},
-        {title: "Address", key: "address"},
+         
         {title: "Impression", key: "impression"},
         {title: "Remarks", key: "remarks"},
         {title: "Date Issued", key: "issued"},
@@ -46,9 +46,16 @@ export class MedicalService {
     this.baseY += 10
 
     autoTable(this.doc, { columns,
-      body: result,startY: this.baseY,
+      body: result,startY: this.baseY,columnStyles:{
+        0: {cellWidth: 30},
+        1: {cellWidth: 50},
+        2: {cellWidth: 50},
+        3: {cellWidth: 25},
+        4: {cellWidth: 25},
+     
+      }
 
-     })
+     },)
 
     this.baseY = 80
     this.service.pdfdata = this.doc.output("blob")

@@ -25,6 +25,7 @@ function createWindow(): BrowserWindow {
     },
   });
   win.setMenu(null)
+  win.setIcon(path.join(__dirname, '/src/assets/logo/moh-logo.png'));
   // win.setIcon(path.join(__dirname, '/src/assets/bagua_mother_final.png'));
 
   if (serve) {

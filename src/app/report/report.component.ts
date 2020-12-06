@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
  
 import { ServiceService } from '../services/service.service'
 import {Location} from '@angular/common';
@@ -9,7 +9,7 @@ import { HttpRequestService} from '../services/http-request.service'
   styleUrls: ['./report.component.scss']
 })
  
-export class ReportComponent implements OnInit {
+export class ReportComponent implements OnInit,OnDestroy {
   
  
   doc:any
@@ -25,6 +25,8 @@ export class ReportComponent implements OnInit {
 
 
   ngOnDestroy(){
+
+    delete(this.service.pdfdata)
   }
 
 

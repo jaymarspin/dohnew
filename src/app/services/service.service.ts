@@ -14,6 +14,6 @@ export class ServiceService {
   pdflink:any
   testid:any
 
- 
+ cachedmeddata:any
   constructor() { }
 }

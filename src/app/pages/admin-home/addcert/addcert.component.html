@@ -70,14 +70,19 @@
         <label for="inputPassword4">Address</label>
         <input type="file"  class="form-control" name="pdf"  >
       </div> -->
+      <div class="harang">
+        <span>Files will show here</span>
+      </div>
       <div class="form-group col-12" >
-      <input id="input-b4" class="form-control" name="input-b3[]" data-allowed-file-extensions='["pdf"]'  type="file" class="file" multiple  (change)="handleUpload($event)"
+      <input id="input-b4" class="form-control" name="input-b4[]" data-allowed-file-extensions='["pdf"]'  type="file" class="file" multiple  (change)="handleUpload($event)"
     data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
   </div>
   
     </div>
     <label>DATE COLLECTED</label>
     <input type="date" id="datecollected" class="form-control" />
+    <label>EXPIRATION DATE</label>
+    <input type="date" id="dateexpiry" class="form-control" />
     <button type="submit" (click)="Submitbtn()" style="width: 50%;position: relative;margin: auto;left: 25%;margin-top: 10px"  class="btn btn-success">Submit</button>
 
 

@@ -219,20 +219,20 @@ report(){
 
 
 this.doc.setFont('Times New Roman','bold');
-this.doc.setFontSize(14);
-this.doc.text('Republic of the Philippines',this.doc.internal.pageSize.getWidth()/2, 30, { align: "center" });
+this.doc.setFontSize(20);
+this.doc.text('MINISTRY OF HEALTH',this.doc.internal.pageSize.getWidth()/2, 30, { align: "center" });
 
 
 this.doc.setFont('Times New Roman','normal');
-this.doc.setFontSize(18);
-this.doc.text('BARMM',this.doc.internal.pageSize.getWidth()/2, 35, { align: "center" });
+this.doc.setFontSize(9);
+this.doc.text('BANGSAMORO AUTONOMOUS REGION IN MUSLIM MINDANAO',this.doc.internal.pageSize.getWidth()/2, 35, { align: "center" });
 
 
 
 
 this.doc.setFont('Times New Roman','bold');
 this.doc.setFontSize(14);
-this.doc.text('MINISTRY OF HEALTH',this.doc.internal.pageSize.getWidth()/2, 40, { align: "center" }),this.doc.setFontSize(13);
+this.doc.text('',this.doc.internal.pageSize.getWidth()/2, 40, { align: "center" }),this.doc.setFontSize(13);
 
 
 // this.doc.setFont('Times New Roman','normal');

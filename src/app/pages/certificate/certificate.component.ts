@@ -416,6 +416,20 @@ let tmp = this.baseY
       }
     }
     goback(){
+      this.service.cachedmeddata = {
+        fname: this.fname,
+        lname: this.lname,
+        mname: this.mname,
+        address: this.address,
+        age: this.age,
+        sex: this.sex,
+        remarks: this.remarks,
+        impression: this.impression,
+        issued: this.issuing,
+        id: this.id
+
+      }
+      delete(this.service.pdfdata)
       this.location.back();
     }
 
@@ -446,6 +460,10 @@ let tmp = this.baseY
 
   public testPageChange(pageNumber: number) {
     console.log('testPageChange() successfully called. Current page # : ' + pageNumber);
+  }
+
+  home(){
+    this.router.navigate(["admin-home"], { replaceUrl: true })
   }
 
 

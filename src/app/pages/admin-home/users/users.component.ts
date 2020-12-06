@@ -142,6 +142,10 @@ export class UsersComponent implements OnInit {
      let result = res.json()
 
      if(result.message == "success"){
+       this.fname = ""
+       this.lname = ""
+       this.username = ""
+       this.password = ""
         this.page = 1
        this.getdata(this.page)
 

@@ -57,7 +57,7 @@ export class ExtensionComponent  implements OnInit {
   constructor(private medical: MedicalService,private router: Router,public service: ServiceService,public http: HttpRequestService) {
     this.page = 1
     this.limit = 50
-    this.filter = 0
+    this.filter = 1
     this.pagebtn = Array()
     
 

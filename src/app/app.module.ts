@@ -20,7 +20,10 @@ import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 import { UsersComponent } from './pages/admin-home/users/users.component';
 import { ReportComponent } from './report/report.component';
 import { AddmedicalComponent } from './pages/addmedical/addmedical.component';
-import { SafePipe } from './safe.pipe'; 
+import { SafePipe } from './safe.pipe';
+import { ExtensionComponent } from './pages/admin-home/extension/extension.component';
+import { ViewcertComponent } from './pages/admin-home/viewcert/viewcert.component'; 
+
 // import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { SafePipe } from './safe.pipe';
     UsersComponent,
     ReportComponent,
     AddmedicalComponent,
-    SafePipe, 
+    SafePipe,
+    ExtensionComponent,
+    ViewcertComponent, 
   ],
   imports: [
     BrowserModule,

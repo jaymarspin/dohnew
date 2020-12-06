@@ -5,6 +5,7 @@ import { HttpRequestService} from '../../services/http-request.service'
 import {Location} from '@angular/common';
 import {Router} from '@angular/router'
 import Swal from 'sweetalert2' 
+
 @Component({
   selector: 'app-addmedical',
   templateUrl: './addmedical.component.html',
@@ -45,6 +46,12 @@ export class AddmedicalComponent implements OnInit {
   addmedical(){
     let userid = localStorage.getItem("userid")
 
+
+    let extension:number = 0
+     
+
+    if(this.userType == 3) extension = 1
+
     if(this.fname.trim() != "" && this.lname.trim() != "" && this.mname.trim() != "" && this.sex.trim() != "" && this.age != null && this.age != 0 && this.address.trim() != "" && this.sex.trim() != "" && this.impression.trim() != ""
     && this.remarks.trim() != "" && this.issuingdate.trim() != ""){
       var loader = document.getElementById("cover-spin")
@@ -61,7 +68,10 @@ export class AddmedicalComponent implements OnInit {
         remarks: this.remarks,
         issuing: this.issuingdate,
         filename: this.service.pdflink,
-        userid: userid
+        userid: userid,
+        extension: extension,
+
+
       }
     this.http.postData("addmedical.php",data).subscribe(res =>{
       loader.style.display = "none"
@@ -70,6 +80,7 @@ export class AddmedicalComponent implements OnInit {
 
 
         if(this.userType == "1"){
+
           Swal.fire(
             'Good job!',
             'Successfully Recorded',
@@ -79,9 +90,10 @@ export class AddmedicalComponent implements OnInit {
         }else{
           Swal.fire(
             'Good job!',
-            'Successfully Recorded',
+            'Successfully Recorded! Recieved by the main office',
             'success'
           )
+          this.location.back();
         }
         
       }else{

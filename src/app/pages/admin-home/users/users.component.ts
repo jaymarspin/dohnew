@@ -164,7 +164,8 @@ export class UsersComponent implements OnInit {
  delete(id){
   
   let data = {
-    id: id
+    id: id,
+    userid: localStorage.getItem("userid")
   }
    this.http.postData("delete-user.php",data).subscribe(res =>{
     let result = res.json()

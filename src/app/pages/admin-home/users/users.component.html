@@ -45,6 +45,7 @@
                     <th>FIRST NAME</th>
                     <th>LAST NAME</th>
                     <th>USERNAME</th>
+                    <th>PRIVILAGE</th>
                    
                     <th>DATE_CREATED</th>
                     <th>ACTION</th>
@@ -70,7 +71,11 @@
                     <td>{{item.name}}</td>
                     <td>{{item.lname}}</td>
                     <td>{{item.username}}</td>
-                 
+                    <td>
+                      <span *ngIf="item.role == 3">Import RT-PCR and create medical certificate</span>
+                      <span *ngIf="item.role == 2">Can Import RT-PCR ONLY</span>
+
+                    </td>
                     <td>{{item.date_created}}</td>
                     <td><button class="btn btn-danger" (click)="delete(item.id)">DELETE</button></td>
                     
@@ -162,7 +167,7 @@
             
             <select [(ngModel)]="usertype" class="form-control">
               <option value="2" selected>Can Import RT-PCR ONLY</option>
-              <option value="3">Can Import RT-PCR and can create medical certificate ONLY</option>
+              <option value="3">Can Import RT-PCR and create medical certificate ONLY</option>
             </select>
 
             

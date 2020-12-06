@@ -184,7 +184,7 @@
               
          
               <th>IMPRESSIONS</th>
-              <th>REMARKS</th>
+              <!-- <th>REMARKS</th> -->
               <th>DATE ISSUED</th>
               <!-- <th>Actions</th> -->
               <!-- <th>EMPLOYMENT STATUS</th> -->
@@ -202,7 +202,7 @@
             <tr (click)="viewcert(item)" data-dismiss="modal" *ngFor="let item of medicals;index as i" [attr.data-index]="i" title="ADDRESS:{{item.address}}, SEX: {{item.sex}}, AGE: {{item.age}}, DATE UPLOADED: {{item.date_created}}">
               <td>{{item.fname}} {{item.mname}}. {{item.lname}}</td>
               <td [innerHTML]="item.impression"> </td>
-              <td [innerHTML]="item.remarks"></td>
+              <!-- <td [innerHTML]="item.remarks"></td> -->
               <td>{{item.issued}}</td>
    
             </tr>

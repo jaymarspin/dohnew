@@ -13,7 +13,7 @@ import {Location} from '@angular/common';
   templateUrl: './certificate.component.html',
   styleUrls: ['./certificate.component.scss']
 })
-export class CertificateComponent implements OnInit {
+export class CertificateComponent implements OnInit,OnDestroy {
 
   @ViewChild('bigPdfViewer', { static: true }) public bigPdfViewer;
   title = 'app';
@@ -118,6 +118,8 @@ export class CertificateComponent implements OnInit {
   }
 
   ngOnDestroy(){
+
+    delete(this.service.pdfdata)
   }
 
  
@@ -371,7 +373,7 @@ let tmp = this.baseY
     this.doc.addImage(img, 'png'  ,25, this.baseY, 45, 30);
 
 
-     let base64 = qrcode(this.request.server+"pdfs/"+this.filename, {
+     let base64 = qrcode(this.request.server+""+this.filename, {
           size: 500
       });
 

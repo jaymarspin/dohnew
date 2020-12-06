@@ -124,9 +124,9 @@ doc:any
     passer = Array()
     upload(data){
       this.request.postData("add-test.php",data).subscribe(res =>{
-         
+        
         let result = res.json()
-        console.log(result)
+         
         if(result.message == "success"){
           this.passer.push(1)
         }else{
@@ -142,6 +142,7 @@ doc:any
                     'Successfully Uploaded',
                     'success'
                   )
+                  this.router.navigate(["admin-home"])
           }else{
    Swal.fire({
         icon: 'error',
@@ -176,6 +177,7 @@ doc:any
           lname: "blank",
           address: "blank",
           pdf: "blank",
+          userid: localStorage.getItem("userid"),
           date_collected: $("#datecollected").val(),
           padfArray: tmp
     

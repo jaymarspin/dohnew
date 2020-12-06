@@ -166,7 +166,8 @@ reportData:any
 
 delete(id){
   let data = {
-    id: id
+    id: id,
+    userid: localStorage.getItem("userid")
   }
  
   var c = confirm("Are you sure?")

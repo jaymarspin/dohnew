@@ -1,7 +1,7 @@
 
 
 <div id="cover-spin"></div>
-<div style="width: 100%; height: 100vh" *ngIf="filename">
+<div style="width: 100%; height: 100vh" *ngIf="filename" (keyup.esc)="goback()">
 
 <ng2-pdfjs-viewer #bigPdfViewer [pdfSrc]="service.pdfdata" downloadFileName="mySample" zoom="auto"
 viewerId="MyID" (onDocumentLoad)="testPagesLoaded($event)" (onPageChange)="testPageChange($event)"

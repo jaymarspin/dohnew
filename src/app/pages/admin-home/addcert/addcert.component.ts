@@ -167,7 +167,7 @@ doc:any
   Submitbtn(){
 
    
-    if($("#datecollected").val().trim() != "" && this.pdfbase.length > 0){
+    if($("#datecollected").val().trim() != "" && this.pdfbase.length > 0 && $("#dateexpiry").val().trim() != ""){
       this.loader = document.getElementById("cover-spin")
 
       this.loader.style.display = "block"
@@ -199,7 +199,7 @@ doc:any
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Please enter date collected and make sure you have at least one RT-PCR ready for upload',
+        text: 'Please enter date collected,expiration and make sure you have at least one RT-PCR ready for upload',
         footer: ' '
       })
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy,ViewChild } from '@angular/core';
+import { Component, OnInit,OnDestroy,ViewChild,HostListener } from '@angular/core';
 import { ServiceService } from '../../services/service.service'
 import pdfjs from 'jspdf';
  import { Router,ActivatedRoute} from '@angular/router'
@@ -14,8 +14,13 @@ import {Location} from '@angular/common';
   styleUrls: ['./certificate.component.scss']
 })
 export class CertificateComponent implements OnInit,OnDestroy {
-
+  ESCAPE_KEYCODE = 27;
   @ViewChild('bigPdfViewer', { static: true }) public bigPdfViewer;
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.keyCode === this.ESCAPE_KEYCODE) {
+        this.goback()
+    }
+}
   title = 'app';
   elementType = 'url';
   value = 'Techiediaries';
@@ -78,6 +83,8 @@ export class CertificateComponent implements OnInit,OnDestroy {
       this.router.navigate(["admin-home/certlisting"])
     }
 
+
+   
     var loader = document.getElementById("cover-spin")
 
     loader.style.display = "block"

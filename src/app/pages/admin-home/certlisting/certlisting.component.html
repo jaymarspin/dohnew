@@ -15,7 +15,7 @@
                         There are <strong *ngIf="customers">{{rapidCount}}</strong> RT-PCR TEST right now
                     </div>
                     <button class="tblaction upload" (click)="addcert()" >UPLOAD RT-PCR</button> 
-                   <button class="tblaction upload" data-toggle="modal" data-target="#report" *ngIf="userType == 1">Reports</button>
+                   <!-- <button class="tblaction upload" data-toggle="modal" data-target="#report" *ngIf="userType == 1">Reports</button> -->
                 <input type="text" id="search" [(ngModel)]="search" (keyup.enter)="searchact()" placeholder="Search RT-PCR"> 
                
                 <button class="tblaction" (click)="refreshed()" >Refresh</button>
@@ -124,49 +124,6 @@
 </div>
 
 
-<div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">SELECT TO PRINT</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-       
-        <div class="row" >
-          <div class="col">
-            <label>Select Certificate:</label>
-            <select [(ngModel)]="certificate" class="form-control" >
-              <option value="" disabled selected></option>
-                      <option *ngFor="let item of certificateSelect" [value]="item.value" >{{item.title}}</option>
-
-
-            </select>
-          </div>
-        </div>
-        <div class="row" >
-          <div class="col">
-            <label>From:</label>
-            <input type="date" [(ngModel)]="from" class="form-control">
-          </div>
-          <div class="col">
-            <label>To:</label>
-            <input type="date" [(ngModel)]="to" class="form-control">
-          </div>
-        </div>
-        
-         <button class="btn btn-primary submitreport" style="margin-top: 10px;" (click)="report()" data-dismiss="modal">CONTINUE</button>
-      </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="medicalhistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">

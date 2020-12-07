@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy,HostListener} from '@angular/core';
  
 import { ServiceService } from '../services/service.service'
 import {Location} from '@angular/common';
@@ -10,7 +10,12 @@ import { HttpRequestService} from '../services/http-request.service'
 })
  
 export class ReportComponent implements OnInit,OnDestroy {
-  
+  ESCAPE_KEYCODE = 27;
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.keyCode === this.ESCAPE_KEYCODE) {
+        this.goback()
+    }
+}
  
   doc:any
    baseY:any = 150
@@ -35,7 +40,7 @@ export class ReportComponent implements OnInit,OnDestroy {
 
 
   testAfterPrint(){
-    console.log("randall")
+   
  
   }
 

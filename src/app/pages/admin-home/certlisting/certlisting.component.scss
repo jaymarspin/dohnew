@@ -48,6 +48,7 @@
         border: none;
         border-radius: 5px;
         z-index: 5;
+        margin-top: 5px;
     }tbody{
         height: auto;
         overflow: hidden;
@@ -229,4 +230,6 @@ text-align: right;
   }.submitreport{
       position: relative;
       width: 200px;
-  }
+  }.alert-dark{
+    max-width: 300px;
+}

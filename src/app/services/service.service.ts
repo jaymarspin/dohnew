@@ -15,5 +15,6 @@ export class ServiceService {
   testid:any
 
  cachedmeddata:any
+ editbool:boolean = false
   constructor() { }
 }

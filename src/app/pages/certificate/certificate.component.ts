@@ -83,6 +83,7 @@ export class CertificateComponent implements OnInit,OnDestroy {
     loader.style.display = "block"
     this.id = parseInt(this.activateRoute.snapshot.paramMap.get("id"))
     this.request.getData("get-medical.php?id="+this.id).subscribe(res =>{
+       
       let result = res.json()
       this.fname = result.fname
       this.lname = result.lname
@@ -99,6 +100,20 @@ export class CertificateComponent implements OnInit,OnDestroy {
       this.viewCert()
 
       loader.style.display = "none"
+      var regex = /<br.*?>/g;
+      this.service.cachedmeddata = {
+        fname: this.fname,
+        lname: this.lname,
+        mname: this.mname,
+        address: this.address.replace(regex, ""),
+        age: this.age,
+        sex: this.sex,
+        remarks: this.remarks.replace(regex, ""),
+        impression: this.impression.replace(regex, ""),
+        issued: this.issuing,
+        id: this.id
+
+      }
     },err =>{
 
       alert("error occured")
@@ -126,7 +141,7 @@ export class CertificateComponent implements OnInit,OnDestroy {
 
   goCert(){
 
-
+    this.service.editbool = false
 
       this.service.doc = this.doc
 
@@ -416,20 +431,11 @@ let tmp = this.baseY
       }
     }
     goback(){
-      this.service.cachedmeddata = {
-        fname: this.fname,
-        lname: this.lname,
-        mname: this.mname,
-        address: this.address,
-        age: this.age,
-        sex: this.sex,
-        remarks: this.remarks,
-        impression: this.impression,
-        issued: this.issuing,
-        id: this.id
-
-      }
+      
+      
+      
       delete(this.service.pdfdata)
+      
       this.location.back();
     }
 
@@ -463,6 +469,7 @@ let tmp = this.baseY
   }
 
   home(){
+    this.service.editbool = false
     this.router.navigate(["admin-home"], { replaceUrl: true })
   }
 

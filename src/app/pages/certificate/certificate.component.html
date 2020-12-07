@@ -12,7 +12,7 @@ viewerId="MyID" (onDocumentLoad)="testPagesLoaded($event)" (onPageChange)="testP
 
 </div>
 
-<div class="back-btn-wrapper home" (click)="home()">
+<div *ngIf="service.editbool" class="back-btn-wrapper home" (click)="home()">
 
   <span>HOME</span>
 </div>

@@ -100,6 +100,7 @@ export class AddmedicalComponent implements OnInit {
             'Successfully Recorded',
             'success'
           )
+          this.service.editbool = true
           this.router.navigate(["certificate/"+result.id])
         }else{
           Swal.fire(
@@ -158,11 +159,11 @@ export class AddmedicalComponent implements OnInit {
 
 
       }
-      console.log(data)
+     
 
       this.http.postData("update-medical.php",data).subscribe(res =>{
         loader.style.display = "none"
-        console.log(res)
+   
         let result = res.json()
         if(result.message == "success"){
   

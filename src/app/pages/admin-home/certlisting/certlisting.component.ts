@@ -291,6 +291,7 @@ addcert(){
 
 viewrtpcr(item,testid){
   if(this.userType == 1 || this.userType == 3){
+    delete(this.service.cachedmeddata)
     this.service.pdflink = item
     this.service.testid = testid
     this.router.navigate(['addmedical'])
